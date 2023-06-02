@@ -13,12 +13,82 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
+    
+    int map[][]={{0,0,0,0,2,0,0,3,0,0,0,0},
+                 {0,0,2,1,1,0,0,1,1,3,0,0},
+                 {0,0,2,0,0,0,0,0,0,3,0,0},
+                 {1,1,1,0,0,0,0,0,0,1,1,1},
+                 {0,0,0,0,0,0,0,0,0,0,0,0},
+                 {4,4,7,0,0,0,0,0,0,8,4,4},
+                 {0,0,2,0,0,0,0,0,0,3,0,0},
+                 {0,0,5,4,4,0,0,4,4,6,0,0}};
+                
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
         
         Explorer Jack = new Explorer();
-        addObject(Jack, 300, 320);
+        addObject(Jack, 300, 200);
+        
+        startRoom();
     }
+    
+    private void startRoom()
+    {
+        for(int i =0; i<12; i++)
+            for(int j=0; j<8;j++)
+            {
+                if(map[j][i]==1)
+                {
+                    TopWalls wall = new TopWalls(); 
+                    wall.setImage(wall.idleTopWalls[Greenfoot.getRandomNumber(4)]);
+                    addObject(wall,25+i*50,25+j*50);
+                }
+                else if(map[j][i]==2)
+                {
+                    SideWalls wall = new SideWalls(); 
+                    wall.setImage(wall.rightSideWalls[Greenfoot.getRandomNumber(2)]);
+                    addObject(wall,25+i*50,25+j*50);
+                }
+                else if(map[j][i]==3)
+                {
+                    SideWalls wall = new SideWalls(); 
+                    wall.setImage(wall.leftSideWalls[Greenfoot.getRandomNumber(2)]);
+                    addObject(wall,25+i*50,25+j*50);
+                }
+                else if(map[j][i]==4)
+                {
+                    BottomWalls wall = new BottomWalls(); 
+                    wall.setImage(wall.idleBottomWalls[Greenfoot.getRandomNumber(2)]);
+                    addObject(wall,25+i*50,25+j*50);
+                }
+                else if(map[j][i]==5)
+                {
+                    Corner wall = new Corner(); 
+                    wall.setImage(wall.cornerWalls[0]);
+                    addObject(wall,25+i*50,25+j*50);
+                }
+                else if(map[j][i]==6)
+                {
+                    Corner wall = new Corner(); 
+                    wall.setImage(wall.cornerWalls[2]);
+                    addObject(wall,25+i*50,25+j*50);
+                }
+                else if(map[j][i]==7)
+                {
+                    Corner wall = new Corner(); 
+                    wall.setImage(wall.cornerWalls[1]);
+                    addObject(wall,25+i*50,25+j*50);
+                }
+                else if(map[j][i]==8)
+                {
+                    Corner wall = new Corner(); 
+                    wall.setImage(wall.cornerWalls[3]);
+                    addObject(wall,25+i*50,25+j*50);
+                }
+                
+            }
+    }
+
 }

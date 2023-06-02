@@ -24,13 +24,19 @@ public class Explorer extends Actor
         // Add your action code here.
         if(Greenfoot.isKeyDown("left"))
         {
-            move(-2);
             facing = "left";
+            move(-2);
         }
         else if(Greenfoot.isKeyDown("right"))
         {
-            move(2);
             facing = "right";
+            move(2);
+        }
+        else if(Greenfoot.isKeyDown("up")){
+            setLocation(getX(), getY() - 2);
+        }
+        else if(Greenfoot.isKeyDown("down")){
+            setLocation(getX(), getY() +2);
         }
         
         animateExplorer();
@@ -41,14 +47,14 @@ public class Explorer extends Actor
         for(int i=0;i<idleRight.length;i++)
         {
             idleRight[i]=new GreenfootImage("images/priest/priest00"+i+".png");
-            idleRight[i].scale(50,50);
+            idleRight[i].scale(40,40);
         }
         
         for(int i=0;i<idleLeft.length;i++)
         {
             idleLeft[i]=new GreenfootImage("images/priest/priest00"+i+".png");
             idleLeft[i].mirrorHorizontally();
-            idleLeft[i].scale(50,50);
+            idleLeft[i].scale(40,40);
         }
         
         //Reset the timer
