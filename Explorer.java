@@ -17,33 +17,36 @@ public class Explorer extends Actor
     GreenfootImage[]idleLeft=new GreenfootImage[4];
     SimpleTimer animationTimer = new SimpleTimer();
     
+    //Direction the octopus is facing 
     String facing = "right";
+    
+    //Normal movement speed
+    static int speed = 2;
     
     public void act()
     {
         // Add your action code here.
-        if(Greenfoot.isKeyDown("left"))
+        if (Greenfoot.isKeyDown("left"))
         {
-            facing = "left";
-            move(-2);
+            moveLeft();
+        }  
+        else if (Greenfoot.isKeyDown("right")){
+            moveRight(); 
+        }  
+        else if (Greenfoot.isKeyDown("up")){
+            moveUp();
         }
-        else if(Greenfoot.isKeyDown("right"))
-        {
-            facing = "right";
-            move(2);
-        }
-        else if(Greenfoot.isKeyDown("up")){
-            setLocation(getX(), getY() - 2);
-        }
-        else if(Greenfoot.isKeyDown("down")){
-            setLocation(getX(), getY() +2);
+        else if (Greenfoot.isKeyDown("down")){
+            moveDown(); 
         }
         
         animateExplorer();
+        
     }
     
     public Explorer()
     {
+        //Load explorer images
         for(int i=0;i<idleRight.length;i++)
         {
             idleRight[i]=new GreenfootImage("images/priest/priest00"+i+".png");
@@ -64,6 +67,9 @@ public class Explorer extends Actor
         setImage(idleRight[0]);
     }
     
+    /**
+     * Animate the explorer
+     */
     int imageIndex=0;
     public void animateExplorer()
     {
@@ -85,5 +91,39 @@ public class Explorer extends Actor
         }
     }
     
+
     
+    public void moveLeft(){
+        facing = "left";
+        move(-speed);
+        //Move to previous position if the explorer crashed into the walls.
+        if (getOneIntersectingObject(Walls.class) != null) {
+            move(speed);
+        }
+    }
+    
+    public void moveRight(){
+        facing = "right";
+        move(speed);
+        //Move to previous position if the explorer crashed into the walls.
+        if (getOneIntersectingObject(Walls.class) != null) {
+            move(-speed);
+        }
+    }
+    
+    public void moveUp(){
+        setLocation(getX(), getY() - speed);
+        //Move to previous position if the explorer crashed into the walls.
+        if (getOneIntersectingObject(Walls.class) != null) {
+            setLocation(getX(), getY() + speed);
+        }
+    }
+    
+    public void moveDown(){
+        setLocation(getX(), getY() + speed);
+        //Move to previous position if the explorer crashed into the walls.
+        if (getOneIntersectingObject(Walls.class) != null) {
+            setLocation(getX(), getY() - speed);
+        }
+    }
 }

@@ -1,63 +1,32 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The main world.
+ * The room on the right.
  * 
- * @author (Vanessa Huo) 
- * @version (May 2023)
+ * @author (Vanessa) 
+ * @version (Huo)
  */
-public class MyWorld extends World
+public class RightRoom extends World
 {
-
+    int map[][]={{0,0,2,0,1,1,1,0,1,1,1,3},
+                 {3,0,2,0,0,0,0,0,0,0,0,3},
+                 {3,0,5,4,4,4,3,0,8,4,4,6},
+                 {1,1,1,1,1,1,3,0,3,0,0,0},
+                 {0,0,0,0,0,0,0,0,3,0,0,0},
+                 {8,4,7,0,0,0,0,0,1,1,1,3},
+                 {3,0,2,0,0,0,0,0,0,0,0,3},
+                 {6,0,5,4,4,4,4,4,4,7,0,3}};
+    
     /**
-     * Constructor for objects of class MyWorld.
+     * Constructor for objects of class RightRoom.
      * 
      */
-    
-    int map[][]={{0,0,0,0,2,0,0,3,0,0,0,2},
-                 {0,0,2,1,1,0,0,1,1,3,0,2},
-                 {0,0,2,0,0,0,0,0,0,3,0,2},
-                 {1,1,1,0,0,0,0,0,0,1,1,1},
-                 {0,0,0,0,0,0,0,0,0,0,0,0},
-                 {4,4,7,0,0,0,0,0,0,8,4,4},
-                 {0,0,2,0,0,0,0,0,0,3,0,0},
-                 {0,0,5,4,7,0,0,8,4,6,0,0}};
-    
-    
-    public MyWorld()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
-        
-        Explorer player = new Explorer();
-        addObject(player, 300, 200);
-        
-        makeWalls();
-    }
-    
-    public void act(){
-        Actor actor = (Actor)getObjects(Explorer.class).get(0);
-        if(actor.getX() >= 500){
-            RightRoom gameWorld = new RightRoom();
-            gameWorld.addObject(actor,0,actor.getY());
-            Greenfoot.setWorld(gameWorld);
-        }
-        
-        else if(actor.getX() <= 100){
-            LeftRoom gameWorld = new LeftRoom();
-            gameWorld.addObject(actor,600,actor.getY());
-            Greenfoot.setWorld(gameWorld);
-        }
-        else if(actor.getY() <= 10){
-            UpRoom gameWorld = new UpRoom();
-            gameWorld.addObject(actor,actor.getX(),400);
-            Greenfoot.setWorld(gameWorld);
-        }
-        else if(actor.getY() >= 390){
-            DownRoom gameWorld = new DownRoom();
-            gameWorld.addObject(actor,actor.getX(),0);
-            Greenfoot.setWorld(gameWorld);
-        }
+    public RightRoom()
+    {  
+       super(600, 400, 1);
+
+       makeWalls();
+ 
     }
     
     public void makeWalls()
@@ -122,5 +91,4 @@ public class MyWorld extends World
                 
             }
     }
-
 }
