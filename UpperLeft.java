@@ -1,39 +1,41 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The room on the right.
+ * Write a description of class UpperLeft here.
  * 
- * @author (Vanessa) 
- * @version (Huo)
+ * @author (your name) 
+ * @version (a version number or a date)
  */
-public class RightRoom extends World
+public class UpperLeft extends World
 {
-    int map[][]={{0,0,2,0,1,1,1,0,1,1,1,3},
-                 {3,0,2,0,0,0,0,0,0,0,0,3},
-                 {3,0,5,4,4,4,3,0,8,4,4,6},
-                 {1,1,1,1,1,1,3,0,3,0,0,0},
-                 {0,0,0,0,0,0,0,0,3,0,0,0},
-                 {8,4,7,0,0,0,0,0,1,1,1,3},
-                 {3,0,2,0,0,0,0,0,0,0,0,3},
-                 {6,0,5,4,4,4,4,4,4,7,0,3}};
-    
+
     /**
-     * Constructor for objects of class RightRoom.
+     * Constructor for objects of class UpperLeft.
      * 
      */
-    public RightRoom()
-    {  
-       super(600, 400, 1);
-
-       makeWalls();
- 
+    
+    
+    int map[][]={{0,0,0,0,0,0,0,0,0,0,0,0},
+                 {0,0,0,0,0,0,0,0,0,0,0,2},
+                 {0,0,0,0,0,0,2,1,1,1,1,1},
+                 {0,0,2,1,1,1,1,0,0,0,0,0},
+                 {0,0,2,0,0,0,0,0,8,4,4,4},
+                 {0,0,5,4,4,7,0,8,0,0,0,2},
+                 {0,0,0,0,0,2,0,3,0,0,0,0},
+                 {0,0,0,0,2,1,0,1,3,0,0,2}};
+    
+    public UpperLeft()
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(600, 400, 1);
+        makeWalls();
     }
     
     public void act(){
         Actor actor = (Actor)getObjects(Explorer.class).get(0);
-        if(actor.getX() <= 10){
-            CenterRoom gameWorld = new CenterRoom();
-            gameWorld.addObject(actor,490,actor.getY());
+        if(actor.getY() >= 390){
+            LeftRoom gameWorld = new LeftRoom();
+            gameWorld.addObject(actor,actor.getX(),15);
             Greenfoot.setWorld(gameWorld);
         }
     }

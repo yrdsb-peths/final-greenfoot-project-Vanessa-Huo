@@ -28,6 +28,20 @@ public class LeftRoom extends World
        makeWalls();
     }
     
+    public void act(){
+        Actor actor = (Actor)getObjects(Explorer.class).get(0);
+        if(actor.getX() >= 590){
+            CenterRoom gameWorld = new CenterRoom();
+            gameWorld.addObject(actor,105,actor.getY());
+            Greenfoot.setWorld(gameWorld);
+        }
+        else if(actor.getY() <= 10){
+            UpperLeft gameWorld = new UpperLeft();
+            gameWorld.addObject(actor,actor.getX(),385);
+            Greenfoot.setWorld(gameWorld);
+        }
+    }
+    
     public void makeWalls()
     {
         for(int i =0; i<12; i++)

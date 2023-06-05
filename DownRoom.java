@@ -30,6 +30,15 @@ public class DownRoom extends World
        makeWalls();
     }
     
+    public void act(){
+        Actor actor = (Actor)getObjects(Explorer.class).get(0);
+        if(actor.getY() <= 10){
+            CenterRoom gameWorld = new CenterRoom();
+            gameWorld.addObject(actor,actor.getX(),380);
+            Greenfoot.setWorld(gameWorld);
+        }
+    }
+    
     public void makeWalls()
     {
         for(int i =0; i<12; i++)

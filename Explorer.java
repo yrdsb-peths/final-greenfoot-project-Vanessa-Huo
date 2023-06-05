@@ -42,6 +42,7 @@ public class Explorer extends Actor
         
         animateExplorer();
         
+        
     }
     
     public Explorer()
@@ -126,4 +127,6 @@ public class Explorer extends Actor
             setLocation(getX(), getY() - speed);
         }
     }
+    
+
 }

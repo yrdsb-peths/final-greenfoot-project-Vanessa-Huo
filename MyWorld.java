@@ -23,7 +23,6 @@ public class MyWorld extends World
                  {0,0,2,0,0,0,0,0,0,3,0,0},
                  {0,0,5,4,7,0,0,8,4,6,0,0}};
     
-    
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -39,23 +38,23 @@ public class MyWorld extends World
         Actor actor = (Actor)getObjects(Explorer.class).get(0);
         if(actor.getX() >= 500){
             RightRoom gameWorld = new RightRoom();
-            gameWorld.addObject(actor,0,actor.getY());
+            gameWorld.addObject(actor,15,actor.getY());
             Greenfoot.setWorld(gameWorld);
         }
         
         else if(actor.getX() <= 100){
             LeftRoom gameWorld = new LeftRoom();
-            gameWorld.addObject(actor,600,actor.getY());
+            gameWorld.addObject(actor,580,actor.getY());
             Greenfoot.setWorld(gameWorld);
         }
         else if(actor.getY() <= 10){
             UpRoom gameWorld = new UpRoom();
-            gameWorld.addObject(actor,actor.getX(),400);
+            gameWorld.addObject(actor,actor.getX(),385);
             Greenfoot.setWorld(gameWorld);
         }
         else if(actor.getY() >= 390){
             DownRoom gameWorld = new DownRoom();
-            gameWorld.addObject(actor,actor.getX(),0);
+            gameWorld.addObject(actor,actor.getX(),15);
             Greenfoot.setWorld(gameWorld);
         }
     }
