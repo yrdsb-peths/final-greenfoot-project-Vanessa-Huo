@@ -19,8 +19,8 @@ public class UpperLeft extends World
                  {0,0,0,0,0,0,0,0,0,0,0,2},
                  {0,0,0,0,0,0,2,1,1,1,1,1},
                  {0,0,2,1,1,1,1,0,0,0,0,0},
-                 {0,0,2,0,0,0,0,0,8,4,4,4},
-                 {0,0,5,4,4,7,0,8,0,0,0,2},
+                 {0,0,2,0,0,0,0,0,8,4,4,7},
+                 {0,0,5,4,4,7,0,8,6,0,0,0},
                  {0,0,0,0,0,2,0,3,0,0,0,0},
                  {0,0,0,0,2,1,0,1,3,0,0,2}};
     
@@ -36,6 +36,11 @@ public class UpperLeft extends World
         if(actor.getY() >= 390){
             LeftRoom gameWorld = new LeftRoom();
             gameWorld.addObject(actor,actor.getX(),15);
+            Greenfoot.setWorld(gameWorld);
+        }
+        else if(actor.getX() >= 590){
+            UpRoom gameWorld = new UpRoom();
+            gameWorld.addObject(actor,105,actor.getY());
             Greenfoot.setWorld(gameWorld);
         }
     }
