@@ -1,49 +1,48 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class DownRoom here.
+ * Write a description of class LowerRight here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class DownRoom extends World
+public class LowerRight extends World
 {
 
     /**
-     * Constructor for objects of class DownRoom.
+     * Constructor for objects of class LowerRight.
      * 
      */
     
-    int map[][]={{0,0,5,4,7,0,0,8,4,6,0,0},
-                 {0,0,0,0,2,0,0,3,0,0,0,0},
-                 {3,0,0,2,1,0,0,1,3,0,0,2},
-                 {1,1,1,1,0,0,0,0,3,0,0,2},
-                 {0,0,0,0,0,0,0,0,3,0,0,2},
-                 {8,4,4,7,0,0,0,0,3,0,0,2},
-                 {6,0,0,5,4,4,4,4,6,0,0,5},
+    int map[][]={{0,0,0,0,0,0,0,0,0,2,0,3},
+                 {0,0,2,1,1,1,1,1,1,1,0,3},
+                 {0,0,2,0,0,0,0,0,0,0,0,3},
+                 {0,0,2,0,0,0,0,0,0,0,0,3},
+                 {0,0,2,0,0,0,0,0,0,0,0,3},
+                 {0,0,5,4,4,4,4,4,4,4,4,6},
+                 {0,0,0,0,0,0,0,0,0,0,0,0},
                  {0,0,0,0,0,0,0,0,0,0,0,0}};
     
-    public DownRoom()
-    {
-       super(600, 400, 1);
-
-       makeWalls();
+    public LowerRight()
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(600, 400, 1);
+        makeWalls();
     }
     
     public void act(){
         Actor actor = (Actor)getObjects(Explorer.class).get(0);
         if(actor.getY() <= 10){
-            CenterRoom gameWorld = new CenterRoom();
-            gameWorld.addObject(actor,actor.getX(),380);
+            RightRoom gameWorld = new RightRoom();
+            gameWorld.addObject(actor,actor.getX(),385);
             Greenfoot.setWorld(gameWorld);
         }
         else if(actor.getX() <= 100){
-            LowerLeft gameWorld = new LowerLeft();
+            DownRoom gameWorld = new DownRoom();
             gameWorld.addObject(actor,580,actor.getY());
             Greenfoot.setWorld(gameWorld);
         }
     }
-    
     public void makeWalls()
     {
         for(int i =0; i<12; i++)

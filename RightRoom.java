@@ -41,6 +41,11 @@ public class RightRoom extends World
             gameWorld.addObject(actor,actor.getX(),385);
             Greenfoot.setWorld(gameWorld);
         }
+        else if(actor.getY() >= 390){
+            LowerRight gameWorld = new LowerRight();
+            gameWorld.addObject(actor,actor.getX(),15);
+            Greenfoot.setWorld(gameWorld);
+        }
     }
     
     public void makeWalls()

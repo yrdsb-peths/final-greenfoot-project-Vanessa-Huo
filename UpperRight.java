@@ -37,9 +37,9 @@ public class UpperRight extends World
             gameWorld.addObject(actor,actor.getX(),15);
             Greenfoot.setWorld(gameWorld);
         }
-        else if(actor.getX() <= 100){
+        else if(actor.getX() <= 50){
             UpRoom gameWorld = new UpRoom();
-            gameWorld.addObject(actor,580,actor.getY());
+            gameWorld.addObject(actor,545,actor.getY());
             Greenfoot.setWorld(gameWorld);
         }
     }

@@ -37,6 +37,16 @@ public class UpRoom extends World
             gameWorld.addObject(actor,actor.getX(),15);
             Greenfoot.setWorld(gameWorld);
         }
+        else if(actor.getX() >= 550){
+            UpperRight gameWorld = new UpperRight();
+            gameWorld.addObject(actor,55,actor.getY());
+            Greenfoot.setWorld(gameWorld);
+        }
+        else if(actor.getX() <= 100){
+            UpperLeft gameWorld = new UpperLeft();
+            gameWorld.addObject(actor,580,actor.getY());
+            Greenfoot.setWorld(gameWorld);
+        }
     }
     
     public void makeWalls()
