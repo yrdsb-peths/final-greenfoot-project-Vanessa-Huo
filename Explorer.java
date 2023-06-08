@@ -42,6 +42,7 @@ public class Explorer extends Actor
         
         animateExplorer();
         
+        collect();
         
     }
     
@@ -92,18 +93,15 @@ public class Explorer extends Actor
         }
     }
     
-    
     public void collect()
     {
         if(isTouching(Coins.class))
         {
             MyWorld world = (MyWorld)getWorld();
             removeTouching(Coins.class);
-            world.createCoins();
+            world.increaseCoins();
         }
     }
-    
-
     
     public void moveLeft(){
         facing = "left";

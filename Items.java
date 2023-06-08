@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Items here.
+ * The items that the explorer needs to collect to escape from the dungeon.
  * 
  * @author (your name) 
  * @version (a version number or a date)
