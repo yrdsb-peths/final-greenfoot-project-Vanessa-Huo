@@ -14,32 +14,34 @@ public class MyWorld extends World
      * 
      */
     
+    
     public int score = 0;
     
-    int map[][] = {{9,9,9,9,9,9,9,9,9,9,9,2,1,1,1,1,1,1,3,9,9,9,9,9,9,9,9,9,9,9},
-            {9,9,9,9,9,9,9,9,9,9,9,2,0,0,0,0,0,0,3,9,9,9,9,9,9,9,9,9,9,9},
-            {9,9,9,9,9,9,2,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,3,9,2,1,3,9,9,9},
-            {9,9,2,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,9,2,0,3,9,9,9},
-            {9,9,2,0,0,0,0,0,8,4,4,7,0,0,0,0,0,0,8,4,7,0,3,9,2,0,3,9,9,9},
-            {9,9,5,4,4,7,0,8,6,9,9,5,4,7,0,0,8,4,6,9,2,0,3,9,2,0,3,9,9,9},
-            {9,9,9,9,9,2,0,3,9,9,9,9,9,2,0,0,3,9,9,9,2,0,1,1,1,0,1,1,1,3},
-            {9,9,9,9,2,1,0,1,3,9,9,2,1,1,0,0,1,1,3,9,2,0,0,0,0,0,0,0,0,3},
-            {9,9,9,9,2,0,0,0,3,9,9,2,0,0,0,0,0,0,3,9,5,4,4,4,3,0,8,4,4,6},
-            {9,9,9,9,2,0,0,0,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,3,0,3,9,9,9},
-            {9,9,9,9,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,9,9,9},
-            {2,1,1,1,1,0,0,0,8,4,4,7,0,0,0,0,0,0,8,4,7,0,0,0,0,0,1,1,1,3},
-            {2,0,0,0,0,0,0,0,3,9,9,2,0,0,0,0,0,0,3,9,2,0,0,0,0,0,0,0,0,3},
-            {2,0,8,7,0,8,4,4,6,9,9,5,4,7,0,0,8,4,6,9,5,4,4,4,4,4,4,7,0,3},
-            {2,0,3,2,0,3,9,9,9,9,9,9,9,2,0,0,3,9,9,9,9,9,9,9,9,9,9,2,0,3},
-            {2,0,4,4,0,1,1,1,1,3,9,9,2,1,0,0,1,3,9,9,2,1,1,1,1,1,1,1,0,3},
-            {5,4,7,0,0,0,0,0,0,3,9,9,2,0,0,0,0,3,9,9,2,0,0,0,0,0,0,0,0,3},
-            {9,9,2,0,0,0,0,0,0,1,1,1,1,0,0,0,0,3,9,9,2,0,0,0,0,0,0,0,0,3},
-            {9,9,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,9,9,2,0,0,0,0,0,0,0,0,3},
-            {9,9,2,0,0,0,0,0,0,8,4,4,7,0,0,0,0,3,9,9,2,0,0,0,0,0,0,0,0,3},
-            {9,9,5,4,4,4,4,4,4,6,9,9,5,4,4,4,4,6,9,9,5,4,4,4,4,4,4,4,4,6}};
+    int map[][]={{9,9,9,9,9,9,9,9,9,9,9,2,1,1,1,1,1,1,3,9,9,9,9,9,9,9,9,9,9,9},
+                {9,9,9,9,9,9,9,9,9,9,9,2,0,0,0,0,0,0,3,9,9,9,9,9,9,9,9,9,9,9},
+                {9,9,9,9,9,9,2,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,3,9,2,1,3,9,9,9},
+                {9,9,2,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,9,2,0,3,9,9,9},
+                {9,9,2,0,0,0,0,0,8,4,4,7,0,0,0,0,0,0,8,4,7,0,3,9,2,0,3,9,9,9},
+                {9,9,5,4,4,7,0,8,6,9,9,5,4,7,0,0,8,4,6,9,2,0,3,9,2,0,3,9,9,9},
+                {9,9,9,9,9,2,0,3,9,9,9,9,9,2,0,0,3,9,9,9,2,0,1,1,1,0,1,1,1,3},
+                {9,9,9,9,2,1,0,1,3,9,9,2,1,1,0,0,1,1,3,9,2,0,0,0,0,0,0,0,0,3},
+                {9,9,9,9,2,0,0,0,3,9,9,2,0,0,0,0,0,0,3,9,5,4,4,4,3,0,8,4,4,6},
+                {9,9,9,9,2,0,0,0,1,1,1,1,0,0,0,0,0,0,1,1,1,1,1,1,3,0,3,9,9,9},
+                {9,9,9,9,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,9,9,9},
+                {2,1,1,1,1,0,0,0,8,4,4,7,0,0,0,0,0,0,8,4,7,0,0,0,0,0,1,1,1,3},
+                {2,0,0,0,0,0,0,0,3,9,9,2,0,0,0,0,0,0,3,9,2,0,0,0,0,0,0,0,0,3},
+                {2,0,8,7,0,8,4,4,6,9,9,5,4,7,0,0,8,4,6,9,5,4,4,4,4,4,4,7,0,3},
+                {2,0,3,2,0,3,9,9,9,9,9,9,9,2,0,0,3,9,9,9,9,9,9,9,9,9,9,2,0,3},
+                {2,0,4,4,0,1,1,1,1,3,9,9,2,1,0,0,1,3,9,9,2,1,1,1,1,1,1,1,0,3},
+                {5,4,7,0,0,0,0,0,0,3,9,9,2,0,0,0,0,3,9,9,2,0,0,0,0,0,0,0,0,3},
+                {9,9,2,0,0,0,0,0,0,1,1,1,1,0,0,0,0,3,9,9,2,0,0,0,0,0,0,0,0,3},
+                {9,9,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,9,9,2,0,0,0,0,0,0,0,0,3},
+                {9,9,2,0,0,0,0,0,0,8,4,4,7,0,0,0,0,3,9,9,2,0,0,0,0,0,0,0,0,3},
+                {9,9,5,4,4,4,4,4,4,6,9,9,5,4,4,4,4,6,9,9,5,4,4,4,4,4,4,4,4,6}};
 
     Label scoringCoins1;
     Label scoringCoins2;
+
     
     LifePoints heart0;
     LifePoints heart1;
@@ -51,16 +53,19 @@ public class MyWorld extends World
         super(1050,735,1,false);
         makeWalls();
 
+        createPeaks();
+        createCoins();
+        
         Explorer player = new Explorer();
         addObject(player,getWidth()/2,getHeight()/2);
-
-        createCoins();
+        
+        createLifePoints();
 
         //Create score label for coins
         scoringCoins1 = new Label(0,30);
-        addObject(scoringCoins1,60,30);
+        addObject(scoringCoins1,50,20);
         scoringCoins2 = new Label("/15",30);
-        addObject(scoringCoins2,90,30);
+        addObject(scoringCoins2,80,20);
         
         prepare();
     }
@@ -70,9 +75,24 @@ public class MyWorld extends World
         scoringCoins1.setValue(score); 
     }
 
+    public void createPeaks(){
+        int peakNum = Greenfoot.getRandomNumber(6)+2; //get random number between 2-7        
+        for(int i =0; i < peakNum; i++){
+            int x = Greenfoot.getRandomNumber(getRow());
+            int y = Greenfoot.getRandomNumber(getCol());
+            while(map[x][y]!=0)
+            {
+                x=Greenfoot.getRandomNumber(getRow());
+                y=Greenfoot.getRandomNumber(getCol());
+            }
+            Peaks peak = new Peaks();
+            addObject(peak,15+y*35,15+x*35);
+        }
+    }
+    
     public void createCoins(){
-        int randomNum = Greenfoot.getRandomNumber(6)+15; //get random number between 15-20        
-        for(int i =0; i < randomNum; i++){
+        int coinNum = Greenfoot.getRandomNumber(6)+15; //get random number between 15-20        
+        for(int i =0; i < coinNum; i++){
             int x = Greenfoot.getRandomNumber(getRow());
             int y = Greenfoot.getRandomNumber(getCol());
             while(map[x][y]!=0)
@@ -91,6 +111,30 @@ public class MyWorld extends World
 
     public int getCol(){
         return map[0].length;
+    }
+    
+    public int getNum(int x, int y){
+        return map[x][y];
+    }
+    
+    int count = 0;
+    public void removeLP()
+    {
+        if(count==0)
+        {
+            removeObject(heart0);
+            count++;
+        }
+        else if(count==1)
+        {
+            removeObject(heart1);
+            count++;
+        }
+        else
+        {
+            removeObject(heart2);
+            count++;
+        }
     }
 
     public void makeWalls()
@@ -159,6 +203,17 @@ public class MyWorld extends World
                 }
             }
     }
+    
+    //Create three LifePoints/hearts on the upper-right corner of the screen
+    public void createLifePoints()
+    {
+        heart2 = new LifePoints();
+        heart1 = new LifePoints(); 
+        heart0 = new LifePoints(); 
+        addObject(heart2, 1030, 20);
+        addObject(heart1, 1000, 20);
+        addObject(heart0, 970, 20);
+    }
 
     /**
      * Prepare the world for the start of the program.
@@ -167,6 +222,6 @@ public class MyWorld extends World
     private void prepare()
     {
         Coins x = new Coins();
-        addObject(x,30,30);
+        addObject(x,20,20);
     }
 }

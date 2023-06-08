@@ -16,12 +16,15 @@ public class Explorer extends Actor
     GreenfootImage[]idleRight=new GreenfootImage[4];
     GreenfootImage[]idleLeft=new GreenfootImage[4];
     SimpleTimer animationTimer = new SimpleTimer();
+    SimpleTimer timer = new SimpleTimer();
     
     //Direction the octopus is facing 
     String facing = "right";
     
     //Normal movement speed
     static int speed = 2;
+    
+    int spawnTimer;
     
     public void act()
     {
@@ -43,6 +46,8 @@ public class Explorer extends Actor
         animateExplorer();
         
         collect();
+        
+        stepOnPeaks();
         
     }
     
@@ -67,6 +72,21 @@ public class Explorer extends Actor
         
         //Initial explorer image
         setImage(idleRight[0]);
+        
+    }
+    
+    public void stepOnPeaks(){
+        MyWorld world = (MyWorld)getWorld();
+        Peaks peak = (Peaks)getWorld().getObjects(Peaks.class).get(0);
+        if(isTouching(Peaks.class))
+        {
+            if(peak.getIndex()==0){
+                if(timer.millisElapsed()>300){
+                    world.removeLP();
+                }
+                timer.mark();
+            }
+        }
     }
     
     /**
@@ -92,6 +112,7 @@ public class Explorer extends Actor
             imageIndex=(imageIndex + 1) % idleLeft.length;
         }
     }
+
     
     public void collect()
     {
