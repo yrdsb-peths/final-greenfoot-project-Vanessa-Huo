@@ -23,7 +23,7 @@ public class Corner extends Walls
         for(int i=0;i<cornerWalls.length;i++)
         {
             cornerWalls[i]=new GreenfootImage("images/corner/tile00"+i+".png");
-            cornerWalls[i].scale(50,50);
+            cornerWalls[i].scale(35,35);
         }
         
         setImage(cornerWalls[1]);

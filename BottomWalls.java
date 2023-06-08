@@ -23,7 +23,7 @@ public class BottomWalls extends Walls
         for(int i=0;i<idleBottomWalls.length;i++)
         {
             idleBottomWalls[i]=new GreenfootImage("images/bottom/tile00"+i+".png");
-            idleBottomWalls[i].scale(50,50);
+            idleBottomWalls[i].scale(35,35);
         }
         
         setImage(idleBottomWalls[1]);

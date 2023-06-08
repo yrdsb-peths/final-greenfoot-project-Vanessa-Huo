@@ -23,7 +23,7 @@ public class TopWalls extends Walls
         for(int i=0;i<idleTopWalls.length;i++)
         {
             idleTopWalls[i]=new GreenfootImage("images/top/tile00"+i+".png");
-            idleTopWalls[i].scale(50,50);
+            idleTopWalls[i].scale(35,35);
         }
         
         setImage(idleTopWalls[1]);

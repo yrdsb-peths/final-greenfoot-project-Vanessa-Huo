@@ -51,14 +51,14 @@ public class Explorer extends Actor
         for(int i=0;i<idleRight.length;i++)
         {
             idleRight[i]=new GreenfootImage("images/priest/priest00"+i+".png");
-            idleRight[i].scale(40,40);
+            idleRight[i].scale(30,30);
         }
         
         for(int i=0;i<idleLeft.length;i++)
         {
             idleLeft[i]=new GreenfootImage("images/priest/priest00"+i+".png");
             idleLeft[i].mirrorHorizontally();
-            idleLeft[i].scale(40,40);
+            idleLeft[i].scale(30,30);
         }
         
         //Reset the timer
@@ -89,6 +89,17 @@ public class Explorer extends Actor
         {
             setImage(idleLeft[imageIndex]);
             imageIndex=(imageIndex + 1) % idleLeft.length;
+        }
+    }
+    
+    
+    public void collect()
+    {
+        if(isTouching(Coins.class))
+        {
+            MyWorld world = (MyWorld)getWorld();
+            removeTouching(Coins.class);
+            world.createCoins();
         }
     }
     
