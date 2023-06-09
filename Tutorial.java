@@ -35,4 +35,8 @@ public class Tutorial extends Actor
             ;
         }
     }
+    
+    public Tutorial(){
+        setImage(start);
+    }
 }

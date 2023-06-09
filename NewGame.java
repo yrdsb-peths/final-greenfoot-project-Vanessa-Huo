@@ -36,4 +36,8 @@ public class NewGame extends Actor
             Greenfoot.setWorld(gameWorld);
         }
     }
+    
+    public NewGame(){
+        setImage(start);
+    }
 }

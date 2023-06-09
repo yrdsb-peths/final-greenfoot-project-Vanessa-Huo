@@ -8,16 +8,25 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
-    
-    
     public int scoreC = 0;
     public int scoreB = 0;
     public int scoreR = 0;
+    SimpleTimer timer = new SimpleTimer();
+    GreenfootSound bgm = new GreenfootSound("bgm.wav");
+    
+    
+    Label scoringCoins1;
+    Label scoringCoins2;
+    Label BF1;
+    Label BF2;
+    Label RF1;
+    Label RF2;
+
+    LifePoints heart0;
+    LifePoints heart1;
+    LifePoints heart2;
+    Gate gate = new Gate();
+    Label open;
     
     int map[][]={{9,9,9,9,9,9,9,9,9,9,9,2,1,1,1,1,1,1,3,9,9,9,9,9,9,9,9,9,9,9},
                  {9,9,9,9,9,9,9,9,9,9,9,2,0,0,0,0,0,0,3,9,9,9,9,9,9,9,9,9,9,9},
@@ -41,22 +50,14 @@ public class MyWorld extends World
                  {9,9,2,0,0,0,0,0,0,8,4,4,7,0,0,0,0,3,9,9,2,0,0,0,0,0,0,0,0,3},
                  {9,9,5,4,4,4,4,4,4,6,9,9,5,4,4,4,4,6,9,9,5,4,4,4,4,4,4,4,4,6}};
 
-    Label scoringCoins1;
-    Label scoringCoins2;
-    Label BF1;
-    Label BF2;
-    Label RF1;
-    Label RF2;
-
-    
-    LifePoints heart0;
-    LifePoints heart1;
-    LifePoints heart2;
-
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1050,735,1,false);
+        bgm.setVolume(25);
+        bgm.playLoop();
+        
+        getGate();
         makeWalls();
 
         createPeaks();
@@ -73,15 +74,15 @@ public class MyWorld extends World
         
         prepare();
         
-        //View view = new View(player);
-        //addObject(view,player.getX(),player.getY());
+        View view = new View(player);
+        addObject(view,player.getX(),player.getY());
         
         items();
         
         createLifePoints();
         scoringCoins1 = new Label(0,30);
         addObject(scoringCoins1,50,20);
-        scoringCoins2 = new Label("/20",30);
+        scoringCoins2 = new Label("/15",30);
         addObject(scoringCoins2,90,20);
         BF1 = new Label(0,30);
         addObject(BF1,50,50);
@@ -92,21 +93,60 @@ public class MyWorld extends World
         RF2 = new Label("/2",30);
         addObject(RF2,80,80);
         
+        check();
+        
+    }
+    
+    public void check(){
+        if(scoreC >= 15 && scoreB == 2 && scoreR == 2){
+            if(gate != null){
+                removeObjects(getObjects(Gate.class));
+                open = new Label("The Gate is Now Opened", 50);
+                addObject(open,500,120);
+            }
+        }
+    }
+    
+    public void gameOver(){
+        Label gameOverLabel = new Label("Game Over", 80);
+        addObject(gameOverLabel,getWidth()/2,getHeight()/2);
+        bgm.stop();
+        Greenfoot.stop();
+    }
+    
+    public void victory(){
+        Label gameOverLabel1 = new Label("Congratulation!", 80);
+        Label gameOverLabel2 = new Label("You have escaped from the dungeon!", 50);
+        addObject(gameOverLabel1,getWidth()/2,290);
+        addObject(gameOverLabel2,getWidth()/2,470);
+        bgm.stop();
+        Greenfoot.stop();
     }
     
     public void increaseCoins(){
         scoreC++;
         scoringCoins1.setValue(scoreC); 
+        check();
     }
     
     public void increaseBF(){
         scoreB++;
         BF1.setValue(scoreB); 
+        check();
     }
     
     public void increaseRF(){
         scoreR++;
         RF1.setValue(scoreR); 
+        check();
+    }
+    
+    int num = Greenfoot.getRandomNumber(getCol());
+    public void getGate(){
+        while(map[20][num]!=4){
+            num = Greenfoot.getRandomNumber(getCol());
+        }
+        map[20][num]=10;
     }
 
     public void createPeaks(){
@@ -197,6 +237,7 @@ public class MyWorld extends World
         }
     }
 
+
     public int getRow(){
         return map.length;
     }
@@ -226,6 +267,7 @@ public class MyWorld extends World
         {
             removeObject(heart2);
             count++;
+            gameOver();
         }
     }
 
@@ -292,6 +334,10 @@ public class MyWorld extends World
                 {
                     Space wall = new Space(); 
                     addObject(wall,15+i*35,15+j*35);
+                }
+                else if(map[j][i]==10)
+                { 
+                    addObject(gate,15+i*35,15+j*35);
                 }
             }
     }

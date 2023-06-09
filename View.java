@@ -25,9 +25,9 @@ public class View extends Actor
         pp=p;
         setImage(bkg);        
     }
+    
     public void act() 
     {
         setLocation(pp.getX(), pp.getY());
-
     }
 }

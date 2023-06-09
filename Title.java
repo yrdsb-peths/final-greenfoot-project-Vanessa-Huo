@@ -15,6 +15,9 @@ public class Title extends World
      */
     
     GreenfootImage bcImage = new GreenfootImage("Tbg.png");
+    NewGame start = new NewGame();
+    
+    
     
     public Title()
     {    
@@ -24,9 +27,8 @@ public class Title extends World
         bcImage.scale(1050,735);
         setBackground(bcImage);
         
-        NewGame start = new NewGame();
-        Tutorial start1 = new Tutorial();
         addObject(start, getWidth()/2, 450);
+        Tutorial start1 = new Tutorial();
         addObject(start1, getWidth()/2, 600);
         
     }

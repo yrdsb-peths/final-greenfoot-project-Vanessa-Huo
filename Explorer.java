@@ -53,6 +53,13 @@ public class Explorer extends Actor
         
         burn();
         
+        MyWorld world = (MyWorld)getWorld();
+        if(getY()>=world.getHeight())
+        {
+            world.victory();
+            Greenfoot.stop();
+        }
+        
     }
     
     public Explorer()
@@ -76,6 +83,7 @@ public class Explorer extends Actor
         
         //Initial explorer image
         setImage(idleRight[0]);
+        
         
     }
     
@@ -195,6 +203,4 @@ public class Explorer extends Actor
             setLocation(getX(), getY() - speed);
         }
     }
-    
-
 }
