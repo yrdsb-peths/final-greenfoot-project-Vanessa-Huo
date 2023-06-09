@@ -49,6 +49,8 @@ public class Explorer extends Actor
         
         stepOnPeaks();
         
+        burn();
+        
     }
     
     public Explorer()
@@ -80,7 +82,7 @@ public class Explorer extends Actor
         Peaks peak = (Peaks)getWorld().getObjects(Peaks.class).get(0);
         if(isTouching(Peaks.class))
         {
-            if(peak.getIndex()==0){
+            if(peak.getIndex()==2){
                 if(timer.millisElapsed()>300){
                     world.removeLP();
                 }
@@ -88,6 +90,22 @@ public class Explorer extends Actor
             }
         }
     }
+    
+    public void burn(){
+        MyWorld world = (MyWorld)getWorld();
+        FlameT flame = (FlameT)getWorld().getObjects(FlameT.class).get(0);
+        FlameL flameL = (FlameL)getWorld().getObjects(FlameL.class).get(0);
+        if(isTouching(FlameT.class) || isTouching(FlameL.class))
+        {
+            if(flame.getIndex()==2 || flameL.getIndex()==2){
+                if(timer.millisElapsed()>300){
+                    world.removeLP();
+                }
+                timer.mark();
+            }
+        }
+    }
+    
     
     /**
      * Animate the explorer

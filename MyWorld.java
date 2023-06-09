@@ -50,10 +50,12 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1050,735,1,false);
+        super(1050,770,1,false);
         makeWalls();
 
         createPeaks();
+        createFlameT();
+        createFlameL();
         createCoins();
         
         Explorer player = new Explorer();
@@ -64,7 +66,7 @@ public class MyWorld extends World
         //Create score label for coins
         scoringCoins1 = new Label(0,30);
         addObject(scoringCoins1,50,20);
-        scoringCoins2 = new Label("/15",30);
+        scoringCoins2 = new Label("/20",30);
         addObject(scoringCoins2,80,20);
         
         prepare();
@@ -76,7 +78,7 @@ public class MyWorld extends World
     }
 
     public void createPeaks(){
-        int peakNum = Greenfoot.getRandomNumber(6)+2; //get random number between 2-7        
+        int peakNum = Greenfoot.getRandomNumber(4)+3; //get random number between 3-6        
         for(int i =0; i < peakNum; i++){
             int x = Greenfoot.getRandomNumber(getRow());
             int y = Greenfoot.getRandomNumber(getCol());
@@ -87,6 +89,36 @@ public class MyWorld extends World
             }
             Peaks peak = new Peaks();
             addObject(peak,15+y*35,15+x*35);
+        }
+    }
+    
+    public void createFlameT(){
+        int flameNum = Greenfoot.getRandomNumber(2)+2; //get random number between 2-3        
+        for(int i =0; i < flameNum; i++){
+            int x = Greenfoot.getRandomNumber(getRow());
+            int y = Greenfoot.getRandomNumber(getCol());
+            while(map[x][y]!=1)
+            {
+                x=Greenfoot.getRandomNumber(getRow());
+                y=Greenfoot.getRandomNumber(getCol());
+            }
+            FlameT flame = new FlameT();
+            addObject(flame,15+y*35,30+x*35);
+        }
+    }
+    
+    public void createFlameL(){
+        int flameNum = Greenfoot.getRandomNumber(2)+2; //get random number between 2-3        
+        for(int i =0; i < flameNum; i++){
+            int x = Greenfoot.getRandomNumber(getRow());
+            int y = Greenfoot.getRandomNumber(getCol());
+            while(map[x][y]!=2)
+            {
+                x=Greenfoot.getRandomNumber(getRow());
+                y=Greenfoot.getRandomNumber(getCol());
+            }
+            FlameL flame = new FlameL();
+            addObject(flame,60+y*35,15+x*35);
         }
     }
     
@@ -223,5 +255,29 @@ public class MyWorld extends World
     {
         Coins x = new Coins();
         addObject(x,20,20);
+        Flags flags = new Flags();
+        addObject(flags,450,260);
+        Flags flags2 = new Flags();
+        addObject(flags2,590,260);
+        Flags flags3 = new Flags();
+        addObject(flags3,190,260);
+        Flags flags4 = new Flags();
+        addObject(flags4,258,260);
+        Flags flags5 = new Flags();
+        addObject(flags5,330,610);
+        Flags flags6 = new Flags();
+        addObject(flags6,435,610);
+        Flags flags7 = new Flags();
+        addObject(flags7,852,227);
+        Flags flags8 = new Flags();
+        addObject(flags8,923,226);
+        Flags flags9 = new Flags();
+        addObject(flags9,470,15);
+        Flags flags10 = new Flags();
+        addObject(flags10,575,15);
+        Flags flags11 = new Flags();
+        addObject(flags11,815,540);
+        Flags flags12 = new Flags();
+        addObject(flags12,890,540);
     }
 }
