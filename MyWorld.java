@@ -56,7 +56,7 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1050,770,1,false);
+        super(1050,735,1,false);
         makeWalls();
 
         createPeaks();
@@ -68,10 +68,17 @@ public class MyWorld extends World
         
         Explorer player = new Explorer();
         addObject(player,getWidth()/2,getHeight()/2);
-        
-        createLifePoints();
 
         //Create score label for coins
+        
+        prepare();
+        
+        //View view = new View(player);
+        //addObject(view,player.getX(),player.getY());
+        
+        items();
+        
+        createLifePoints();
         scoringCoins1 = new Label(0,30);
         addObject(scoringCoins1,50,20);
         scoringCoins2 = new Label("/20",30);
@@ -85,7 +92,6 @@ public class MyWorld extends World
         RF2 = new Label("/2",30);
         addObject(RF2,80,80);
         
-        prepare();
     }
     
     public void increaseCoins(){
@@ -307,8 +313,6 @@ public class MyWorld extends World
      */
     private void prepare()
     {
-        Coins x = new Coins();
-        addObject(x,20,20);
         Flags flags = new Flags();
         addObject(flags,450,260);
         Flags flags2 = new Flags();
@@ -333,6 +337,11 @@ public class MyWorld extends World
         addObject(flags11,815,540);
         Flags flags12 = new Flags();
         addObject(flags12,890,540);
+    }
+    
+    private void items(){
+        Coins x = new Coins();
+        addObject(x,20,20);  
         BFlasks bFlasks = new BFlasks();
         addObject(bFlasks,20,50);
         RFlasks rFlasks = new RFlasks();
