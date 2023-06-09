@@ -45,7 +45,9 @@ public class Explorer extends Actor
         
         animateExplorer();
         
-        collect();
+        collectCoins();
+        collectBF();
+        collectRF();
         
         stepOnPeaks();
         
@@ -106,7 +108,6 @@ public class Explorer extends Actor
         }
     }
     
-    
     /**
      * Animate the explorer
      */
@@ -130,15 +131,34 @@ public class Explorer extends Actor
             imageIndex=(imageIndex + 1) % idleLeft.length;
         }
     }
-
     
-    public void collect()
+    public void collectCoins()
     {
         if(isTouching(Coins.class))
         {
             MyWorld world = (MyWorld)getWorld();
             removeTouching(Coins.class);
             world.increaseCoins();
+        }
+    }
+    
+    public void collectBF()
+    {
+        if(isTouching(BFlasks.class))
+        {
+            MyWorld world = (MyWorld)getWorld();
+            removeTouching(BFlasks.class);
+            world.increaseBF();
+        }
+    }
+    
+    public void collectRF()
+    {
+        if(isTouching(RFlasks.class))
+        {
+            MyWorld world = (MyWorld)getWorld();
+            removeTouching(RFlasks.class);
+            world.increaseRF();
         }
     }
     
