@@ -32,7 +32,8 @@ public class Tutorial extends Actor
         //If the mouse has been clicked on the "New Game", change world
         if(Greenfoot.mouseClicked(this))
         {
-            ;
+            TutorialPage gameWorld = new TutorialPage();
+            Greenfoot.setWorld(gameWorld);
         }
     }
     

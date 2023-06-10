@@ -11,8 +11,9 @@ public class MyWorld extends World
     public int scoreC = 0;
     public int scoreB = 0;
     public int scoreR = 0;
-    SimpleTimer timer = new SimpleTimer();
     GreenfootSound bgm = new GreenfootSound("bgm.wav");
+    GreenfootSound reduceLP = new GreenfootSound("lp-1.mp3");
+    SimpleTimer gameTimer = new SimpleTimer();
     
     
     Label scoringCoins1;
@@ -54,7 +55,7 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1050,735,1,false);
-        bgm.setVolume(25);
+        bgm.setVolume(0);
         bgm.playLoop();
         
         getGate();
@@ -66,6 +67,7 @@ public class MyWorld extends World
         createBFlasks();
         createRFlasks();
         createCoins();
+        createSkull();
         
         Explorer player = new Explorer();
         addObject(player,getWidth()/2,getHeight()/2);
@@ -82,7 +84,7 @@ public class MyWorld extends World
         createLifePoints();
         scoringCoins1 = new Label(0,30);
         addObject(scoringCoins1,50,20);
-        scoringCoins2 = new Label("/15",30);
+        scoringCoins2 = new Label("/12",30);
         addObject(scoringCoins2,90,20);
         BF1 = new Label(0,30);
         addObject(BF1,50,50);
@@ -93,12 +95,13 @@ public class MyWorld extends World
         RF2 = new Label("/2",30);
         addObject(RF2,80,80);
         
+        gameTimer.mark();
         check();
         
     }
     
     public void check(){
-        if(scoreC >= 15 && scoreB == 2 && scoreR == 2){
+        if(scoreC >= 12 && scoreB == 2 && scoreR == 2){
             if(gate != null){
                 removeObjects(getObjects(Gate.class));
                 open = new Label("The Gate is Now Opened", 50);
@@ -117,8 +120,11 @@ public class MyWorld extends World
     public void victory(){
         Label gameOverLabel1 = new Label("Congratulation!", 80);
         Label gameOverLabel2 = new Label("You have escaped from the dungeon!", 50);
+        int x = gameTimer.millisElapsed()/1000;
+        Label gameOverLabel3 = new Label("Score time: "+x+" second", 50);
         addObject(gameOverLabel1,getWidth()/2,290);
         addObject(gameOverLabel2,getWidth()/2,470);
+        addObject(gameOverLabel3,getWidth()/2,570);
         bgm.stop();
         Greenfoot.stop();
     }
@@ -150,7 +156,7 @@ public class MyWorld extends World
     }
 
     public void createPeaks(){
-        int peakNum = Greenfoot.getRandomNumber(4)+3; //get random number between 3-6        
+        int peakNum = Greenfoot.getRandomNumber(3)+3; //get random number between 3-5        
         for(int i =0; i < peakNum; i++){
             int x = Greenfoot.getRandomNumber(getRow());
             int y = Greenfoot.getRandomNumber(getCol());
@@ -161,6 +167,21 @@ public class MyWorld extends World
             }
             Peaks peak = new Peaks();
             addObject(peak,15+y*35,15+x*35);
+        }
+    }
+    
+    public void createSkull(){
+        int peakNum = Greenfoot.getRandomNumber(2)+2; //get random number between 2-3
+        for(int i =0; i < peakNum; i++){
+            int x = Greenfoot.getRandomNumber(getRow());
+            int y = Greenfoot.getRandomNumber(getCol());
+            while(map[x][y]!=0)
+            {
+                x=Greenfoot.getRandomNumber(getRow());
+                y=Greenfoot.getRandomNumber(getCol());
+            }
+            Skull skull = new Skull();
+            addObject(skull,16+y*35,16+x*35);
         }
     }
     
@@ -256,16 +277,22 @@ public class MyWorld extends World
         if(count==0)
         {
             removeObject(heart0);
+            reduceLP.setVolume(30);
+            reduceLP.play();
             count++;
         }
         else if(count==1)
         {
             removeObject(heart1);
+            reduceLP.setVolume(30);
+            reduceLP.play();
             count++;
         }
         else
         {
             removeObject(heart2);
+            reduceLP.setVolume(30);
+            reduceLP.play();
             count++;
             gameOver();
         }

@@ -50,6 +50,7 @@ public class Explorer extends Actor
         collectRF();
         
         stepOnPeaks();
+        touchSkull();
         
         burn();
         
@@ -98,6 +99,18 @@ public class Explorer extends Actor
                 }
                 timer.mark();
             }
+        }
+    }
+    
+    public void touchSkull(){
+        MyWorld world = (MyWorld)getWorld();
+        Skull skull = (Skull)getWorld().getObjects(Skull.class).get(0);
+        if(isTouching(Skull.class))
+        {
+            if(timer.millisElapsed()>300){
+                world.removeLP();
+            }
+            timer.mark();
         }
     }
     
