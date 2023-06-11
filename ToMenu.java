@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ToMenu here.
+ * Image "back to menu"
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class ToMenu extends Actor
 {
@@ -14,7 +14,7 @@ public class ToMenu extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        //If it's clicked, go back to title screen
         if(Greenfoot.mouseClicked(this))
         {
             Title gameWorld = new Title();

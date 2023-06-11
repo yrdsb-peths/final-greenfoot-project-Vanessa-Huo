@@ -12,23 +12,21 @@ public class Explorer extends Actor
      * Act - do whatever the Explorer wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    
     GreenfootImage[]idleRight=new GreenfootImage[4];
     GreenfootImage[]idleLeft=new GreenfootImage[4];
     SimpleTimer animationTimer = new SimpleTimer();
     SimpleTimer timer = new SimpleTimer();
     
-    //Direction the octopus is facing 
+    //Direction the explorer is facing 
     String facing = "right";
     
     //Normal movement speed
     static int speed = 2;
     
     int spawnTimer;
-    
     public void act()
     {
-        // Add your action code here.
+        //Move explorer with direction keys
         if (Greenfoot.isKeyDown("left"))
         {
             moveLeft();
@@ -42,25 +40,26 @@ public class Explorer extends Actor
         else if (Greenfoot.isKeyDown("down")){
             moveDown(); 
         }
-        
+        //Animate the explorer
         animateExplorer();
         
+        //Collect items
         collectCoins();
         collectBF();
         collectRF();
         
+        //Get attacked 
         stepOnPeaks();
         touchSkull();
-        
         burn();
         
+        //If explorer escaped, call VICTORY
         MyWorld world = (MyWorld)getWorld();
         if(getY()>=world.getHeight())
         {
             world.victory();
             Greenfoot.stop();
         }
-        
     }
     
     public Explorer()
@@ -83,17 +82,19 @@ public class Explorer extends Actor
         animationTimer.mark();
         
         //Initial explorer image
-        setImage(idleRight[0]);
-        
-        
+        setImage(idleRight[0]);        
     }
     
+    /**
+     * If explorer steps on the peaks, reduce one Lp
+     */
     public void stepOnPeaks(){
         MyWorld world = (MyWorld)getWorld();
         Peaks peak = (Peaks)getWorld().getObjects(Peaks.class).get(0);
         if(isTouching(Peaks.class))
         {
             if(peak.getIndex()==2){
+                //Make the detect time to be slower
                 if(timer.millisElapsed()>300){
                     world.removeLP();
                 }
@@ -102,11 +103,15 @@ public class Explorer extends Actor
         }
     }
     
+    /**
+     * If explorer collide with skull ghosts, reduce one Lp
+     */
     public void touchSkull(){
         MyWorld world = (MyWorld)getWorld();
         Skull skull = (Skull)getWorld().getObjects(Skull.class).get(0);
         if(isTouching(Skull.class))
         {
+            //Make the detect time to be slower
             if(timer.millisElapsed()>300){
                 world.removeLP();
             }
@@ -114,13 +119,18 @@ public class Explorer extends Actor
         }
     }
     
+    /**
+     * If explorer get burnt by fire, reduce one Lp
+     */
     public void burn(){
         MyWorld world = (MyWorld)getWorld();
         FlameT flame = (FlameT)getWorld().getObjects(FlameT.class).get(0);
         FlameL flameL = (FlameL)getWorld().getObjects(FlameL.class).get(0);
         if(isTouching(FlameT.class) || isTouching(FlameL.class))
         {
+            //The specific images where fire coming from left and top
             if(flame.getIndex()==2 || flameL.getIndex()==2){
+                //Make the detect time to be slower
                 if(timer.millisElapsed()>300){
                     world.removeLP();
                 }
@@ -153,6 +163,7 @@ public class Explorer extends Actor
         }
     }
     
+    //Increase number of coins collected when explorer touches the coin
     public void collectCoins()
     {
         if(isTouching(Coins.class))
@@ -163,6 +174,7 @@ public class Explorer extends Actor
         }
     }
     
+    //Increase number of blue flasks collected when explorer touches the flasks
     public void collectBF()
     {
         if(isTouching(BFlasks.class))
@@ -173,6 +185,7 @@ public class Explorer extends Actor
         }
     }
     
+    //Increase number of red flasks collected when explorer touches the flasks
     public void collectRF()
     {
         if(isTouching(RFlasks.class))

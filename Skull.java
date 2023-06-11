@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Skull here.
+ * The skull ghosts wandering around in the dungeon.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class Skull extends Attack
 {
@@ -14,25 +14,21 @@ public class Skull extends Attack
      */
     SimpleTimer timer = new SimpleTimer();
     GreenfootImage skull =new GreenfootImage("images/skull/skull_v1_1.png");
-    
-    String facing = "right";
-    
     public void act()
     {
-        // Add your action code here.
+        //Random movement
         randomMove();
     }
     
     public Skull(){
-
-        
-        //Initial coin image
+        //Initial skull image
         skull.scale(30,30);
         setImage(skull);
     }
     
-    
+    //Random movement in the dungeon
     public void randomMove(){
+        //Speed of the movement
         if(timer.millisElapsed()>16.5){
             move(2);
             if(Greenfoot.getRandomNumber(100)<10){
@@ -43,7 +39,7 @@ public class Skull extends Attack
                 turn(90);
             }
         }
+        //Reset timer
         timer.mark();
     }
-    
 }

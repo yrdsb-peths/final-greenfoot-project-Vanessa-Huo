@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class View here.
+ * The view screen. 
+ * Get rid of it if you want to cheat.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class View extends Actor
 {
@@ -26,6 +27,7 @@ public class View extends Actor
         setImage(bkg);        
     }
     
+    //Let the view screen to move with the explorer
     public void act() 
     {
         setLocation(pp.getX(), pp.getY());

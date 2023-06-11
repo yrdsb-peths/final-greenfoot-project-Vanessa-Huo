@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class RFlasks here.
+ * Red flasks.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class RFlasks extends Items
 {
@@ -17,8 +17,7 @@ public class RFlasks extends Items
     
     public void act()
     {
-        // Add your action code here.
-        
+        //Animate the flasks
         animateBFlasks();
     }
     
@@ -28,14 +27,17 @@ public class RFlasks extends Items
             rFlasks[i]=new GreenfootImage("images/flasks/flasks_4_"+(i+1)+".png");
             rFlasks[i].scale(35,35);
         }
-        
+
         //Reset the timer
         animationTimer.mark();
         
-        //Initial coin image
+        //Initial flasks image
         setImage(rFlasks[0]);
     }
     
+    /**
+     * Animate the flasks
+     */
     int imageIndex=0;
     public void animateBFlasks()
     {

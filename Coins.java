@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Coins here.
+ * Coins.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class Coins extends Items
 {
@@ -15,11 +15,9 @@ public class Coins extends Items
     
     GreenfootImage[]coins =new GreenfootImage[4];
     SimpleTimer animationTimer = new SimpleTimer();
-    
     public void act()
     {
-        // Add your action code here.
-        
+        //Animat the coins
         animateCoins();
     }
     
@@ -49,5 +47,4 @@ public class Coins extends Items
         setImage(coins[imageIndex]);
         imageIndex=(imageIndex + 1) % coins.length;
     }
-    
 }

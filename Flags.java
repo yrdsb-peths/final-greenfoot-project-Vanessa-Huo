@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Flags here.
+ * Decoration flags 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class Flags extends Items
 {
@@ -18,7 +18,7 @@ public class Flags extends Items
 
     public void act()
     {
-        // Add your action code here.
+        //Animate the flags
         animateFlags();
     }
     
@@ -32,7 +32,7 @@ public class Flags extends Items
         //Reset the timer
         animationTimer.mark();
         
-        //Initial coin image
+        //Initial flag image
         setImage(flag[0]);
     }
     

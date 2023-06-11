@@ -8,27 +8,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    public int scoreC = 0;
-    public int scoreB = 0;
-    public int scoreR = 0;
     GreenfootSound bgm = new GreenfootSound("bgm.wav");
     GreenfootSound reduceLP = new GreenfootSound("lp-1.mp3");
     SimpleTimer gameTimer = new SimpleTimer();
+    Gate gate = new Gate();
     
+    //Instantiation of score integers
+    public int scoreC = 0;
+    public int scoreB = 0;
+    public int scoreR = 0;
     
+    //Instantiation of score labels for coins, blue flasks and red flasks
     Label scoringCoins1;
     Label scoringCoins2;
     Label BF1;
     Label BF2;
     Label RF1;
     Label RF2;
+    Label open;
 
     LifePoints heart0;
     LifePoints heart1;
     LifePoints heart2;
-    Gate gate = new Gate();
-    Label open;
     
+    //Create the map of the world using 2D array
     int map[][]={{9,9,9,9,9,9,9,9,9,9,9,2,1,1,1,1,1,1,3,9,9,9,9,9,9,9,9,9,9,9},
                  {9,9,9,9,9,9,9,9,9,9,9,2,0,0,0,0,0,0,3,9,9,9,9,9,9,9,9,9,9,9},
                  {9,9,9,9,9,9,2,1,1,1,1,1,0,0,0,0,0,0,1,1,1,1,3,9,2,1,3,9,9,9},
@@ -53,14 +56,19 @@ public class MyWorld extends World
 
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        // Create a new world with 1050x735 cells with a cell size of 1x1 pixels.
         super(1050,735,1,false);
-        bgm.setVolume(0);
+        
+        //Set volume and loop the bgm 
+        bgm.setVolume(25);
         bgm.playLoop();
         
+        //Randomly generate the gate location
         getGate();
+        //Draw the map
         makeWalls();
-
+        
+        //Randomly generate items and enemies in the map
         createPeaks();
         createFlameT();
         createFlameL();
@@ -69,18 +77,20 @@ public class MyWorld extends World
         createCoins();
         createSkull();
         
+        //Create a explorer
         Explorer player = new Explorer();
         addObject(player,getWidth()/2,getHeight()/2);
-
-        //Create score label for coins
         
         prepare();
         
+        //Create the view window (Cheat: common out the two lines)
         View view = new View(player);
         addObject(view,player.getX(),player.getY());
         
+        //Create item icons on the upperleft corner of the screen
         items();
         
+        //Create score labels
         createLifePoints();
         scoringCoins1 = new Label(0,30);
         addObject(scoringCoins1,50,20);
@@ -95,11 +105,16 @@ public class MyWorld extends World
         RF2 = new Label("/2",30);
         addObject(RF2,80,80);
         
+        //Reset the timer of the game
         gameTimer.mark();
         check();
         
     }
     
+    /**
+     * Check if required items are collected. 
+     * If so, tells player the gate is opened.
+     */
     public void check(){
         if(scoreC >= 12 && scoreB == 2 && scoreR == 2){
             if(gate != null){
@@ -110,6 +125,9 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Call "Game Over" and stop the game. 
+     */
     public void gameOver(){
         Label gameOverLabel = new Label("Game Over", 80);
         addObject(gameOverLabel,getWidth()/2,getHeight()/2);
@@ -117,6 +135,9 @@ public class MyWorld extends World
         Greenfoot.stop();
     }
     
+    /**
+     * Call VICTORY and show the time used when player escaped. 
+     */
     public void victory(){
         Label gameOverLabel1 = new Label("Congratulation!", 80);
         Label gameOverLabel2 = new Label("You have escaped from the dungeon!", 50);
@@ -129,24 +150,36 @@ public class MyWorld extends World
         Greenfoot.stop();
     }
     
+    /**
+     * Increase number of coins collected by 1
+     */
     public void increaseCoins(){
         scoreC++;
         scoringCoins1.setValue(scoreC); 
         check();
     }
     
+    /**
+     * Increase number of blue flasks collected by 1
+     */
     public void increaseBF(){
         scoreB++;
         BF1.setValue(scoreB); 
         check();
     }
-    
+
+    /**
+     * Increase number of red flasks collected by 1
+     */
     public void increaseRF(){
         scoreR++;
         RF1.setValue(scoreR); 
         check();
     }
     
+    /**
+     * Randomly generate the gate at the bottom of the map (rol 20)
+     */
     int num = Greenfoot.getRandomNumber(getCol());
     public void getGate(){
         while(map[20][num]!=4){
@@ -155,6 +188,9 @@ public class MyWorld extends World
         map[20][num]=10;
     }
 
+    /**
+     * Randomly generate 3-5 peaks
+     */
     public void createPeaks(){
         int peakNum = Greenfoot.getRandomNumber(3)+3; //get random number between 3-5        
         for(int i =0; i < peakNum; i++){
@@ -170,6 +206,9 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Randomly generate 2-3 skull ghosts
+     */
     public void createSkull(){
         int peakNum = Greenfoot.getRandomNumber(2)+2; //get random number between 2-3
         for(int i =0; i < peakNum; i++){
@@ -185,6 +224,9 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Randomly generate 2-3 flame coming from the top
+     */
     public void createFlameT(){
         int flameNum = Greenfoot.getRandomNumber(2)+2; //get random number between 2-3        
         for(int i =0; i < flameNum; i++){
@@ -200,6 +242,9 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Randomly generate 2-3 flame coming from the left
+     */
     public void createFlameL(){
         int flameNum = Greenfoot.getRandomNumber(2)+2; //get random number between 2-3        
         for(int i =0; i < flameNum; i++){
@@ -215,6 +260,9 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Generate 2 red flasks at random location
+     */
     public void createRFlasks(){       
         for(int i =0; i < 2; i++){
             int x = Greenfoot.getRandomNumber(getRow());
@@ -229,6 +277,9 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Generate 2 blue flasks at random location
+     */
     public void createBFlasks(){       
         for(int i =0; i < 2; i++){
             int x = Greenfoot.getRandomNumber(getRow());
@@ -243,6 +294,9 @@ public class MyWorld extends World
         }
     }
     
+    /**
+     * Generate 15-20 coins at random location
+     */
     public void createCoins(){
         int coinNum = Greenfoot.getRandomNumber(6)+15; //get random number between 15-20        
         for(int i =0; i < coinNum; i++){
@@ -258,19 +312,31 @@ public class MyWorld extends World
         }
     }
 
-
+    //Get row of the map
     public int getRow(){
         return map.length;
     }
 
+    //Get column of the map
     public int getCol(){
         return map[0].length;
     }
     
-    public int getNum(int x, int y){
-        return map[x][y];
+    //Create three LifePoints/hearts on the upper-right corner of the screen
+    public void createLifePoints()
+    {
+        heart2 = new LifePoints();
+        heart1 = new LifePoints(); 
+        heart0 = new LifePoints(); 
+        addObject(heart2, 1030, 20);
+        addObject(heart1, 1000, 20);
+        addObject(heart0, 970, 20);
     }
     
+    /**
+     * Remove one LifePoint
+     * Called "Game Over" when no more Lp left
+     */
     int count = 0;
     public void removeLP()
     {
@@ -298,86 +364,82 @@ public class MyWorld extends World
         }
     }
 
+    /**
+     * Draw the walls according to the number on the map
+     */
     public void makeWalls()
     {
         for(int i =0; i<30; i++)
             for(int j=0; j<21;j++)
             {
-                //Randomly add topwalls 
+                //If number = 1, add random topwalls 
                 if(map[j][i]==1)
                 {
                     TopWalls wall = new TopWalls(); 
                     wall.setImage(wall.idleTopWalls[Greenfoot.getRandomNumber(4)]);
                     addObject(wall,15+i*35,15+j*35);
                 }
-                //Randomly add right sidewalls 
+                //If number = 2, add random right sidewalls 
                 else if(map[j][i]==2)
                 {
                     SideWalls wall = new SideWalls(); 
                     wall.setImage(wall.rightSideWalls[Greenfoot.getRandomNumber(2)]);
                     addObject(wall,15+i*35,15+j*35);
                 }
-                //Randomly add left sidewalls 
+                //If number = 3, add random right sidewalls 
                 else if(map[j][i]==3)
                 {
                     SideWalls wall = new SideWalls(); 
                     wall.setImage(wall.leftSideWalls[Greenfoot.getRandomNumber(2)]);
                     addObject(wall,15+i*35,15+j*35);
                 }
-                //Randomly add bottomwalls 
+                //If number = 4, add random bottom wall 
                 else if(map[j][i]==4)
                 {
                     BottomWalls wall = new BottomWalls(); 
                     wall.setImage(wall.idleBottomWalls[Greenfoot.getRandomNumber(2)]);
                     addObject(wall,15+i*35,15+j*35);
                 }
-                //Add left corner 
+                //If number = 5, add random left corner
                 else if(map[j][i]==5)
                 {
                     Corner wall = new Corner(); 
                     wall.setImage(wall.cornerWalls[0]);
                     addObject(wall,15+i*35,15+j*35);
                 }
-                //Add right corner 
+                //If number = 6, add random right corner 
                 else if(map[j][i]==6)
                 {
                     Corner wall = new Corner(); 
                     wall.setImage(wall.cornerWalls[2]);
                     addObject(wall,15+i*35,15+j*35);
                 }
+                //If number = 7, add corner
                 else if(map[j][i]==7)
                 {
                     Corner wall = new Corner(); 
                     wall.setImage(wall.cornerWalls[1]);
                     addObject(wall,15+i*35,15+j*35);
                 }
+                //If number = 8, add corner
                 else if(map[j][i]==8)
                 {
                     Corner wall = new Corner(); 
                     wall.setImage(wall.cornerWalls[3]);
                     addObject(wall,15+i*35,15+j*35);
                 }
+                //If number = 9, add outer space
                 else if(map[j][i]==9)
                 {
                     Space wall = new Space(); 
                     addObject(wall,15+i*35,15+j*35);
                 }
+                //If number = 10, add gate
                 else if(map[j][i]==10)
                 { 
                     addObject(gate,15+i*35,15+j*35);
                 }
             }
-    }
-    
-    //Create three LifePoints/hearts on the upper-right corner of the screen
-    public void createLifePoints()
-    {
-        heart2 = new LifePoints();
-        heart1 = new LifePoints(); 
-        heart0 = new LifePoints(); 
-        addObject(heart2, 1030, 20);
-        addObject(heart1, 1000, 20);
-        addObject(heart0, 970, 20);
     }
 
     /**

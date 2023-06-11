@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Tutorial here.
+ * The tutorial page.
+ * Introduce game features and how to play the game. 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class Tutorial extends Actor
 {
@@ -13,15 +14,14 @@ public class Tutorial extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     
-    //Initial "New Game" image
+    //Initial "Tutorial" image
     GreenfootImage start = new GreenfootImage("images/tut1.png");
     //New image when the mouse has been moved onto the words
     GreenfootImage move = new GreenfootImage("images/tut2.png");
     
     public void act()
     {
-        // Add your action code here.
-        
+        //If the mouse has been moved on the "Tutorial", change color
         if(Greenfoot.mouseMoved(this)){
             setImage(move);
         }
@@ -29,7 +29,7 @@ public class Tutorial extends Actor
         else{
             setImage(start);
         }
-        //If the mouse has been clicked on the "New Game", change world
+        //If the mouse has been clicked on the "Tutorial", change world
         if(Greenfoot.mouseClicked(this))
         {
             TutorialPage gameWorld = new TutorialPage();

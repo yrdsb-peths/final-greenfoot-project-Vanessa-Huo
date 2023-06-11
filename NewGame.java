@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class NewGame here.
+ * The words "New Game" on the title screen.
+ * Click to start a new game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class NewGame extends Actor
 {
@@ -20,8 +21,7 @@ public class NewGame extends Actor
     
     public void act()
     {
-        // Add your action code here.
-        
+        //If the mouse has been moved on the "New Game", change color
         if(Greenfoot.mouseMoved(this)){
             setImage(move);
         }

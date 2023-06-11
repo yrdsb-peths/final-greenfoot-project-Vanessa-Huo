@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Flame here.
+ * Flame coming out from the top 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class FlameT extends Attack
 {
@@ -17,8 +17,7 @@ public class FlameT extends Attack
     
     public void act()
     {
-        // Add your action code here.
-        
+        //Animate the flame
         animateFlame();
     }
     
@@ -32,14 +31,18 @@ public class FlameT extends Attack
         //Reset the timer
         animationTimer.mark();
         
-        //Initial coin image
+        //Initial flame image
         setImage(flame[3]);
-        
     }
     
+    /**
+     * Animate the flame
+     */
     int imageIndex=0;
     public void animateFlame()
     {
+        //Allow the last image (imageIndex=3) to stay longer during animation
+        //It's the state where no flame is coming out and player can go
         if(imageIndex==0){
             if(animationTimer.millisElapsed()<1600)
             {
@@ -57,8 +60,8 @@ public class FlameT extends Attack
         setImage(flame[imageIndex]);
         imageIndex=(imageIndex + 1) % flame.length;
     }
-
     
+    //Return current imageIndex
     public int getIndex(){
         return imageIndex;
     }
