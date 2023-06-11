@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * The items that the explorer needs to collect to escape from the dungeon.
+ * Items that need to be collected
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class Items extends Actor
 {

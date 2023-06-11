@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class BFlasks here.
+ * Blue flasks
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class BFlasks extends Items
 {
@@ -17,8 +17,7 @@ public class BFlasks extends Items
     
     public void act()
     {
-        // Add your action code here.
-        
+        //Animate the flasks
         animateBFlasks();
     }
     
@@ -32,10 +31,13 @@ public class BFlasks extends Items
         //Reset the timer
         animationTimer.mark();
         
-        //Initial coin image
+        //Initial flasks image
         setImage(bFlasks[0]);
     }
     
+    /**
+     * Animate the flasks
+     */
     int imageIndex=0;
     public void animateBFlasks()
     {

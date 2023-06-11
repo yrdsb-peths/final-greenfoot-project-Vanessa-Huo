@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Peaks here.
+ * Peaks coming from the ground, stepping on them will reduce Lp
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class Peaks extends Attack
 {
@@ -17,9 +17,8 @@ public class Peaks extends Attack
     
     public void act()
     {
-        // Add your action code here.
+        //Animate the peaks 
         animatePeaks();
-        
     }
     
     public Peaks(){
@@ -32,13 +31,18 @@ public class Peaks extends Attack
         //Reset the timer
         animationTimer.mark();
         
-        //Initial coin image
+        //Initial peak image
         setImage(peaks[0]);
     }
     
+    /**
+     * Animate the peaks
+     */
     int imageIndex=0;
     public void animatePeaks()
     {
+        //Allow the last image (imageIndex=3) to stay longer during animation
+        //It's the state where no flame is coming out and player can go
         if(imageIndex==1){
             if(animationTimer.millisElapsed()<1600)
             {
@@ -56,7 +60,6 @@ public class Peaks extends Attack
         setImage(peaks[imageIndex]);
         imageIndex=(imageIndex + 1) % peaks.length;
     }
-    
     
     public int getIndex(){
         return imageIndex;

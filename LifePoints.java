@@ -1,10 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class LifePoints here.
+ * LifePoints system, explorer only has three LifePoints.
+ * GameOver when LifePoints becomes zero.
+ * Getting burnt, stepping on the peaks, touching skull can reduce LifePoints.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class LifePoints extends Actor
 {
@@ -14,6 +16,7 @@ public class LifePoints extends Actor
      */
     GreenfootImage lp = new GreenfootImage("images/lp.png");
     
+    //Create LifePoints
     public LifePoints()
     {
         setImage(lp);
