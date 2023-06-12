@@ -16,6 +16,7 @@ public class Explorer extends Actor
     GreenfootImage[]idleLeft=new GreenfootImage[4];
     SimpleTimer animationTimer = new SimpleTimer();
     SimpleTimer timer = new SimpleTimer();
+    End x = new End();
     
     //Direction the explorer is facing 
     String facing = "right";
@@ -57,8 +58,9 @@ public class Explorer extends Actor
         MyWorld world = (MyWorld)getWorld();
         if(getY()>=world.getHeight())
         {
-            world.victory();
-            Greenfoot.stop();
+            world.bgm.stop();
+            Greenfoot.setWorld(x);
+            x.victory();
         }
     }
     
