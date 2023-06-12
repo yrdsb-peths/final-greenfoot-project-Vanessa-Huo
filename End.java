@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class End here.
+ * Ending screen 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Vanessa) 
+ * @version (June 2023)
  */
 public class End extends World
 {
@@ -31,8 +31,6 @@ public class End extends World
         world.bgm.stop();
         GameOver over = new GameOver();
         addObject(over,getWidth()/2,getHeight()/2);
-        //Label gameOverLabel = new Label("Game Over", 80);
-        //addObject(gameOverLabel,getWidth()/2,getHeight()/2);
         Greenfoot.stop();
     }
     
@@ -42,11 +40,9 @@ public class End extends World
     public void victory(){
         Congratulation con = new Congratulation();
         addObject(con,getWidth()/2,260);
-        //Label gameOverLabel1 = new Label("Congratulation!", 80);
         Label gameOverLabel2 = new Label("You have escaped from the dungeon!", 50);
         int x = gameTimer.millisElapsed()/1000;
         Label gameOverLabel3 = new Label("Score time: "+x+" second", 50);
-        //addObject(gameOverLabel1,getWidth()/2,290);
         addObject(gameOverLabel2,getWidth()/2,430);
         addObject(gameOverLabel3,getWidth()/2,570);
         Greenfoot.stop();
