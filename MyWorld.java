@@ -10,7 +10,6 @@ public class MyWorld extends World
 {
     GreenfootSound bgm = new GreenfootSound("bgm.wav");
     GreenfootSound reduceLP = new GreenfootSound("lp-1.mp3");
-    SimpleTimer gameTimer = new SimpleTimer();
     Gate gate = new Gate();
     
     //Instantiation of score integers
@@ -106,7 +105,6 @@ public class MyWorld extends World
         addObject(RF2,80,80);
         
         //Reset the timer of the game
-        gameTimer.mark();
         check();
         
     }
@@ -123,31 +121,6 @@ public class MyWorld extends World
                 addObject(open,500,120);
             }
         }
-    }
-    
-    /**
-     * Call "Game Over" and stop the game. 
-     */
-    public void gameOver(){
-        Label gameOverLabel = new Label("Game Over", 80);
-        addObject(gameOverLabel,getWidth()/2,getHeight()/2);
-        bgm.stop();
-        Greenfoot.stop();
-    }
-    
-    /**
-     * Call VICTORY and show the time used when player escaped. 
-     */
-    public void victory(){
-        Label gameOverLabel1 = new Label("Congratulation!", 80);
-        Label gameOverLabel2 = new Label("You have escaped from the dungeon!", 50);
-        int x = gameTimer.millisElapsed()/1000;
-        Label gameOverLabel3 = new Label("Score time: "+x+" second", 50);
-        addObject(gameOverLabel1,getWidth()/2,290);
-        addObject(gameOverLabel2,getWidth()/2,470);
-        addObject(gameOverLabel3,getWidth()/2,570);
-        bgm.stop();
-        Greenfoot.stop();
     }
     
     /**
@@ -360,7 +333,10 @@ public class MyWorld extends World
             reduceLP.setVolume(30);
             reduceLP.play();
             count++;
-            gameOver();
+            bgm.stop();
+            End world = new End();
+            Greenfoot.setWorld(world);
+            world.gameOver();
         }
     }
 
