@@ -8,11 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Coins extends Items
 {
-    /**
-     * Act - do whatever the Coins wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
     GreenfootImage[]coins =new GreenfootImage[4];
     SimpleTimer animationTimer = new SimpleTimer();
     public void act()

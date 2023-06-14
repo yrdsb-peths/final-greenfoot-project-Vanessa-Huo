@@ -8,14 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class End extends World
 {
-
+    SimpleTimer gameTimer = new SimpleTimer();
+    
     /**
      * Constructor for objects of class End.
      * 
      */
-    
-    SimpleTimer gameTimer = new SimpleTimer();
-    
     public End()
     {    
         // Create a new world with 1050x735 cells with a cell size of 1x1 pixels.
@@ -42,6 +40,7 @@ public class End extends World
         addObject(con,getWidth()/2,260);
         Label gameOverLabel2 = new Label("You have escaped from the dungeon!", 50);
         int x = gameTimer.millisElapsed()/1000;
+        //Show the time used by player to escape
         Label gameOverLabel3 = new Label("Score time: "+x+" second", 50);
         addObject(gameOverLabel2,getWidth()/2,430);
         addObject(gameOverLabel3,getWidth()/2,570);

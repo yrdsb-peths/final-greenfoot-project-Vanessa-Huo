@@ -9,16 +9,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class NewGame extends Actor
 {
-    /**
-     * Act - do whatever the NewGame wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
     //Initial "New Game" image
     GreenfootImage start = new GreenfootImage("images/new1.png");
     //New image when the mouse has been moved onto the words
     GreenfootImage move = new GreenfootImage("images/new2.png");
     
+    /**
+     * Act - do whatever the NewGame wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act()
     {
         //If the mouse has been moved on the "New Game", change color

@@ -42,7 +42,7 @@ public class Peaks extends Attack
     public void animatePeaks()
     {
         //Allow the last image (imageIndex=3) to stay longer during animation
-        //It's the state where no flame is coming out and player can go
+        //It's the state where no peaks are coming out and player can go
         if(imageIndex==1){
             if(animationTimer.millisElapsed()<1600)
             {

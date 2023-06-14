@@ -8,10 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class BFlasks extends Items
 {
-    /**
-     * Act - do whatever the BFlasks wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     GreenfootImage[]bFlasks =new GreenfootImage[4];
     SimpleTimer animationTimer = new SimpleTimer();
     

@@ -8,11 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Flags extends Items
 {
-    /**
-     * Act - do whatever the Flags wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    
     GreenfootImage[]flag =new GreenfootImage[4];
     SimpleTimer animationTimer = new SimpleTimer();
 

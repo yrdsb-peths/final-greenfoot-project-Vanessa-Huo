@@ -62,7 +62,7 @@ public class MyWorld extends World
         bgm.setVolume(25);
         bgm.playLoop();
         
-        //Randomly generate the gate location
+        //Generate the gate at random location
         getGate();
         //Draw the map
         makeWalls();
@@ -82,7 +82,7 @@ public class MyWorld extends World
         
         prepare();
         
-        //Create the view window (Cheat: common out the two lines)
+        //Create the view window (Cheat: comment out the two lines)
         View view = new View(player);
         addObject(view,player.getX(),player.getY());
         
@@ -151,12 +151,12 @@ public class MyWorld extends World
     }
     
     /**
-     * Randomly generate the gate at the bottom of the map (rol 20)
+     * Generate the gate at the bottom of the map (rol 20)
      */
     int num = Greenfoot.getRandomNumber(getCol());
     public void getGate(){
         while(map[20][num]!=4){
-            num = Greenfoot.getRandomNumber(getCol());
+            int num = Greenfoot.getRandomNumber(getCol());
         }
         map[20][num]=10;
     }
@@ -285,12 +285,12 @@ public class MyWorld extends World
         }
     }
 
-    //Get row of the map
+    //Get row# of the map
     public int getRow(){
         return map.length;
     }
 
-    //Get column of the map
+    //Get column# of the map
     public int getCol(){
         return map[0].length;
     }
@@ -450,6 +450,7 @@ public class MyWorld extends World
         addObject(flags12,890,540);
     }
     
+    //Item icons at upper-left of the screen
     private void items(){
         Coins x = new Coins();
         addObject(x,20,20);  

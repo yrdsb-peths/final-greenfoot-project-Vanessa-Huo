@@ -8,13 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FlameT extends Attack
 {
+    GreenfootImage[]flame =new GreenfootImage[4];
+    SimpleTimer animationTimer = new SimpleTimer();
+    
     /**
      * Act - do whatever the Flame wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    GreenfootImage[]flame =new GreenfootImage[4];
-    SimpleTimer animationTimer = new SimpleTimer();
-    
     public void act()
     {
         //Animate the flame

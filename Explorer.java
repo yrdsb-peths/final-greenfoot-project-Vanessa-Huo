@@ -8,10 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Explorer extends Actor
 {
-    /**
-     * Act - do whatever the Explorer wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     GreenfootImage[]idleRight=new GreenfootImage[4];
     GreenfootImage[]idleLeft=new GreenfootImage[4];
     SimpleTimer animationTimer = new SimpleTimer();
@@ -23,8 +19,7 @@ public class Explorer extends Actor
     
     //Normal movement speed
     static int speed = 2;
-    
-    int spawnTimer;
+
     public void act()
     {
         //Move explorer with direction keys
@@ -106,7 +101,7 @@ public class Explorer extends Actor
     }
     
     /**
-     * If explorer collide with skull ghosts, reduce one Lp
+     * If explorer collides with skull ghosts, reduce one Lp
      */
     public void touchSkull(){
         MyWorld world = (MyWorld)getWorld();
@@ -122,7 +117,7 @@ public class Explorer extends Actor
     }
     
     /**
-     * If explorer get burnt by fire, reduce one Lp
+     * If explorer gets burnt by fire, reduce one Lp
      */
     public void burn(){
         MyWorld world = (MyWorld)getWorld();
