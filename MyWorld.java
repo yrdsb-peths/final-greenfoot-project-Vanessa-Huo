@@ -104,8 +104,6 @@ public class MyWorld extends World
         RF2 = new Label("/2",30);
         addObject(RF2,80,80);
         
-        //Reset the timer of the game
-        check();
         
     }
     
@@ -114,7 +112,7 @@ public class MyWorld extends World
      * If so, tells player the gate is opened.
      */
     public void check(){
-        if(scoreC >= 12 && scoreB == 2 && scoreR == 2){
+        if(scoreC >= 2 && scoreB == 0 && scoreR == 0){
             if(gate != null){
                 removeObjects(getObjects(Gate.class));
                 open = new Label("The Gate is Now Opened", 50);
@@ -153,12 +151,12 @@ public class MyWorld extends World
     /**
      * Generate the gate at the bottom of the map (rol 20)
      */
-    int num = Greenfoot.getRandomNumber(getCol());
+    int gateNum = Greenfoot.getRandomNumber(getCol());
     public void getGate(){
-        while(map[20][num]!=4){
-            int num = Greenfoot.getRandomNumber(getCol());
+        while(map[20][gateNum]!=4){
+            int gateNum = Greenfoot.getRandomNumber(getCol());
         }
-        map[20][num]=10;
+        map[20][gateNum]=10;
     }
 
     /**
@@ -183,8 +181,8 @@ public class MyWorld extends World
      * Randomly generate 2-3 skull ghosts
      */
     public void createSkull(){
-        int peakNum = Greenfoot.getRandomNumber(2)+2; //get random number between 2-3
-        for(int i =0; i < peakNum; i++){
+        int skullNum = Greenfoot.getRandomNumber(2)+2; //get random number between 2-3
+        for(int i =0; i < skullNum; i++){
             int x = Greenfoot.getRandomNumber(getRow());
             int y = Greenfoot.getRandomNumber(getCol());
             while(map[x][y]!=0)
