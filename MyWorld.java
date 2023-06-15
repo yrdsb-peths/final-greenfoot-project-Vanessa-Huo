@@ -154,7 +154,7 @@ public class MyWorld extends World
     int gateNum = Greenfoot.getRandomNumber(getCol());
     public void getGate(){
         while(map[20][gateNum]!=4){
-            int gateNum = Greenfoot.getRandomNumber(getCol());
+            gateNum = Greenfoot.getRandomNumber(getCol());
         }
         map[20][gateNum]=10;
     }
