@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class End extends World
 {
     SimpleTimer gameTimer = new SimpleTimer();
-    
     /**
      * Constructor for objects of class End.
      * 
@@ -25,8 +24,6 @@ public class End extends World
      * Call "Game Over" and stop the game. 
      */
     public void gameOver(){
-        MyWorld world = new MyWorld();
-        world.bgm.stop();
         GameOver over = new GameOver();
         addObject(over,getWidth()/2,getHeight()/2);
         gameTimer.mark();
