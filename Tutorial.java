@@ -26,7 +26,7 @@ public class Tutorial extends Actor
             setImage(move);
         }
         //Change to initial image when the mouse is not on the words
-        else{
+        else if(Greenfoot.mouseMoved(null) && !Greenfoot.mouseMoved(this)){
             setImage(start);
         }
         //If the mouse has been clicked on the "Tutorial", change world
