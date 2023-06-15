@@ -30,7 +30,7 @@ public class End extends World
         GameOver over = new GameOver();
         addObject(over,getWidth()/2,getHeight()/2);
         gameTimer.mark();
-        Greenfoot.stop();
+        //Greenfoot.stop();
     }
     
     /**
@@ -46,6 +46,6 @@ public class End extends World
         addObject(gameOverLabel2,getWidth()/2,430);
         addObject(gameOverLabel3,getWidth()/2,570);
         gameTimer.mark();
-        Greenfoot.stop();
+        //Greenfoot.stop();
     }
 }

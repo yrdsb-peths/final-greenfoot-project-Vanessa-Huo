@@ -112,7 +112,7 @@ public class MyWorld extends World
      * If so, tells player the gate is opened.
      */
     public void check(){
-        if(scoreC >= 2 && scoreB == 0 && scoreR == 0){
+        if(scoreC >= 12 && scoreB == 2 && scoreR == 2){
             if(gate != null){
                 removeObjects(getObjects(Gate.class));
                 open = new Label("The Gate is Now Opened", 50);
