@@ -29,19 +29,19 @@ The player uses **&#8592;**, **&#8594;**, **&#8593;** and **&#8595;** to control
 5. Click `Run` to play the game!
 
 ## Features
-- Explorer has three *Lifepoints*
+- Explorer has three *Lifepoints* (Lp)
 - Attacking System
-  - Peaks: Stepping on peaks reduces 1 LP
-  - Blue skull ghost: Touching ghost reduces 1 Lp
+  - Peaks: Stepping on *peaks* reduces 1 LP
+  - Blue skull ghost: Touching *skull ghost* reduces 1 Lp
   - Flame: Coming from the top and the left side. Getting burnt reduces 1 Lp
-- Every time you start a New Game, there is a possiblity of generating:
-  - 15-20 coins 
-  - 2 red flasks
-  - 2 blue flasks
-  - 3-5 peaks on the ground
-  - 2-3 flame coming from the top
+- Every time you start a New Game, there is a **possiblity** of generating:
+  - 15-20 coins <img height="20" alt="image" src="https://github.com/yrdsb-peths/final-greenfoot-project-Vanessa-Huo/assets/130993636/03393539-69d8-4d81-9e96-a7fccd65a1ec">
+  - 2 red flasks <img height="20" alt="image" src="https://github.com/yrdsb-peths/final-greenfoot-project-Vanessa-Huo/assets/130993636/2e9dc752-60ca-482c-a5e8-829bb05efe82">
+  - 2 blue flasks <img height="20" alt="image" src="https://github.com/yrdsb-peths/final-greenfoot-project-Vanessa-Huo/assets/130993636/33b364cd-ab12-4a88-a539-f410659e72a2">
+  - 3-5 peaks on the ground <img height="20" alt="image" src="https://github.com/yrdsb-peths/final-greenfoot-project-Vanessa-Huo/assets/130993636/b360cc0f-0c6d-4e92-b938-ca9e94c668f0">
+  - 2-3 flame coming from the top 
   - 2-3 flame coming from the left
-  - 2-3 skull ghosts wandering around
+  - 2-3 skull ghosts wandering around <img height="20" alt="image" src="https://github.com/yrdsb-peths/final-greenfoot-project-Vanessa-Huo/assets/130993636/8b7e8d40-0a4a-42aa-9873-0a5815162c36">
  
 ## Cheat Code
 1. Go to `MyWorld` class
@@ -54,9 +54,16 @@ The player uses **&#8592;**, **&#8594;**, **&#8593;** and **&#8595;** to control
 ## Credits
 The game wouldn't be made without the help from: 
 - Mr.Chan - For support
-- [PIHEL_POEM](https://pixel-poem.itch.io/dungeon-assetpuck) - For the dungeon asset pack
-- [JGaudio](https://www.pond5.com/sound-effects/item/37669917-arcade-game-mission-failed-12-quest-game-over-level-down) - For sound effects 
-- [Undertale](https://youtu.be/FKdtstAo6iU) - For background music
+  - Part 1: https://youtu.be/zxaa3X0MihI
+  - Part 2: https://youtu.be/TwID9i0Ey6o
+  - Part 3: https://youtu.be/GT-eFwa4Abc
+   
+- Art asset:
+  - [PIHEL_POEM](https://pixel-poem.itch.io/dungeon-assetpuck) - For the dungeon asset pack
+   
+- Music & Sound Effects: 
+  - [JGaudio](https://www.pond5.com/sound-effects/item/37669917-arcade-game-mission-failed-12-quest-game-over-level-down) - For sound effects 
+  - [Undertale](https://youtu.be/FKdtstAo6iU) - For background music
 
 ## License
 This template and the code in it is licensed under the [MIT License](https://github.com/marcizhu/readme-chess/LICENSE). 
